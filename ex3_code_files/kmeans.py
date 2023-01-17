@@ -15,6 +15,7 @@ def compare_arrays(x1, x2):
             return False
     return True
 
+
 def kmeans(X, k, t):
     """
     :param X: numpy array of size (m, d) containing the test samples
@@ -51,13 +52,7 @@ def kmeans(X, k, t):
                     break
             if found:
                 break
-    for l in labels:
-        if l == -1:
-            print("-------------------")
     return labels.reshape(len(X), 1)
-
-
-
 
 
 def simple_test():

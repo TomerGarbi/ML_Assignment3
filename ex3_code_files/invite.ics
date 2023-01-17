@@ -1,0 +1,67 @@
+BEGIN:VCALENDAR
+METHOD:REQUEST
+PRODID:Microsoft Exchange Server 2010
+VERSION:2.0
+BEGIN:VTIMEZONE
+TZID:Israel Standard Time
+BEGIN:STANDARD
+DTSTART:16010101T020000
+TZOFFSETFROM:+0300
+TZOFFSETTO:+0200
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=-1SU;BYMONTH=10
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:16010101T020000
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0300
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=4FR;BYMONTH=3
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+ORGANIZER;CN="Holtzman, Neta":mailto:neta.holtzman@hpe.com
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=tomergar10
+ @gmail.com:mailto:tomergar10@gmail.com
+ATTENDEE;ROLE=OPT-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN="Roitman, A
+ mit":mailto:amit.roitman@hpe.com
+ATTACH:CID:image001.jpg@01D92382.20525E90
+DESCRIPTION;LANGUAGE=en-US:Hi Tomer\,\nThe home assignment is scheduled for
+  19/1/23 at 10:00.\nThe assignment will be approximately 3 hours and will 
+ cover the programming language C#.\nPlease make sure to have one of the fo
+ llowing IDEs installed and ready to use:\nVisual Studio\, Visual Studio Co
+ de\, or Rider.\n\nYou will receive an email with the assignment itself inc
+ luding instructions on the date and hour we scheduled.\n\nWe will inform y
+ ou of your status for the position\, feedback\, and the rest of the proces
+ s.\n\nPlease kindly confirm this invite.\nNeta Holtzman\, Zerto TA Team.\n
+ \nNeta Holtzman\nTalent Acquisition\nCell: +972-508224716\nEmail: neta.hol
+ tzman@hpe.com<mailto:neta.holtzman@hpe.com>\n\n[cid:image001.jpg@01D92382.
+ 20525E90]<https://www.zerto.com/>\n\n\n
+UID:040000008200E00074C5B7101A82E0080000000040DEB58D8123D901000000000000000
+ 0100000006DC968C94F8EC142ABBA9D108C16ED2F
+SUMMARY;LANGUAGE=en-US:Zerto- Home Assignment - QA Automation Engineer Inte
+ rn position
+DTSTART;TZID=Israel Standard Time:20230119T100000
+DTEND;TZID=Israel Standard Time:20230119T130000
+CLASS:PUBLIC
+PRIORITY:5
+DTSTAMP:20230108T145624Z
+TRANSP:OPAQUE
+STATUS:CONFIRMED
+SEQUENCE:0
+LOCATION;LANGUAGE=en-US:
+X-MICROSOFT-CDO-APPT-SEQUENCE:0
+X-MICROSOFT-CDO-OWNERAPPTID:2064127975
+X-MICROSOFT-CDO-BUSYSTATUS:TENTATIVE
+X-MICROSOFT-CDO-INTENDEDSTATUS:BUSY
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-CDO-INSTTYPE:0
+X-MICROSOFT-DONOTFORWARDMEETING:FALSE
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MICROSOFT-LOCATIONS:[]
+BEGIN:VALARM
+DESCRIPTION:REMINDER
+TRIGGER;RELATED=START:-PT15M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+END:VCALENDAR

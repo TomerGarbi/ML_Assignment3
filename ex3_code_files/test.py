@@ -1,21 +1,17 @@
 import scipy.io as sio
 import numpy as np
 import matplotlib.pyplot as plt
-
+import scipy.linalg as sc
 
 
 data = sio.loadmat("regdata.mat")
-print(list(data.keys()))
+
 X = data["X"].T
 Y = data["Y"]
-print(Y)
+
 X_test = data["Xtest"].T
 Y_test = data["Ytest"]
 
-print(X.shape)
-print(Y.shape)
-print(X_test.shape)
-print(Y_test.shape)
 
 def random_sample(X, Y, n):
     indices = np.array([i for i in range(len(X))])
@@ -50,7 +46,7 @@ def ridgeRegression(X, y, lambdaRange):
 
 def ridge_regression():
     lambdas = [i for i in range(31)]
-    sample_sizes = [i for i in range(10, 101, 10)]
+    sample_sizes = [i for i in range(10, 101, 1)]
     avg_lambdas = np.zeros(len(sample_sizes))
     for rep in range(10):
         minimum_lambdas_for_size = []
@@ -68,8 +64,61 @@ def ridge_regression():
                     min_l = l
             minimum_lambdas_for_size.append(min_l)
         avg_lambdas += np.array(minimum_lambdas_for_size) / 10
-    plt.plot(sample_sizes, np.round(avg_lambdas))
+    plt.plot(sample_sizes, np.round(avg_lambdas), label="minimal error lambda")
+    plt.legend()
+    plt.xlabel("sample size")
+    plt.ylabel("lambda value")
+    plt.title("lambda for minimum error")
     plt.show()
 
+#
+# def makeVector(x1, x2):
+#     a = np.array((x1, x2, 0, 0))
+#     a[2] = a[1] ** 2 + a[2] ** 3
+#     a[3] = (a[3] - a[1]) ** 2
+#     return a.reshape((4, 1))
+#
+#
+# c = makeVector(1, 2)
+# d = makeVector(2, 3)
+#
+# e = np.hstack((c, d))
+#
+# # A = c @ c.T
+# A = e @ e.T
+# #
+# # print("A:", A)
+# #
+# # print("eigvals:", np.linalg.eigvals(A))
 
-ridge_regression()
+
+
+x1 = 6
+x2 = -2
+x3 = x1 ** 2 + x2 ** 3
+x4 = (x3 - x1) ** 2
+
+y1 = 2
+y2 = 6
+y3 = y1 ** 2 + y2 ** 3
+y4 = (y3 - y1) ** 2
+
+
+x = np.array([[x1, x2, x3, x4],
+             [y1, y2, y3, y4]])
+
+
+
+
+t = 4
+A = np.zeros((t, 4))
+for xt in A:
+    xt[0] = np.random.randint(-3, 3)
+    xt[1] = np.random.randint(-3, 3)
+    xt[2] = xt[0] ** 2 + xt[1] ** 3
+    xt[3] = (xt[2] - xt[1]) ** 2
+X = A.T @ A
+print(A)
+print(X.shape)
+print (X)
+print(np.linalg.eigvals(X))

@@ -1,14 +1,17 @@
 import numpy as np
 import scipy.io as sio
-
+import itertools
 from scipy.spatial import distance_matrix
 
 
-def cluster_dist(c1, c2):
+def cluster_dist(c):
+    p1, p2 = c[0], c[1]
+    c1 = p1[0]
+    c2 = p2[0]
     dist_mat = distance_matrix(c1, c2)
     return np.min(dist_mat)
 
-def singlelinkage(X, k):
+def singlelinkage(X, k, numbered_clusters=None):
     """
     :param X: numpy array of size (m, d) containing the test samples
     :param k: the number of clusters
@@ -17,19 +20,14 @@ def singlelinkage(X, k):
     clusters = [[x] for x in X]
     while len(clusters) > k:
         print(len(clusters))
-        indices = (0, 1)
-        min_cluster_dist = cluster_dist(clusters[0], clusters[1])
-        for i in range(len(clusters)):
-            for j in range(i+1, len(clusters)):
-                dist = cluster_dist(clusters[i], clusters[j])
-                if dist < min_cluster_dist:
-                    min_cluster_dist = dist
-                    print("--")
-                    indices = (i, j)
-        c1 = clusters[indices[0]]
-        c2 = clusters[indices[1]]
+        numbered_clusters = list(zip(clusters, itertools.count()))
+        pairs = itertools.combinations(numbered_clusters, 2)
+        pairs = sorted(pairs, key=cluster_dist)
+        min_pair = pairs[0]
+        c1 = clusters[min_pair[0][1]]
+        c2 = clusters[min_pair[1][1]]
         c1.extend(c2)
-        del clusters[indices[1]]
+        del clusters[min_pair[1][1]]
 
     labels = np.ones(len(X)) * -1
     for i, x in enumerate(X):
